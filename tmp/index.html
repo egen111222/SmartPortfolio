@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Balance</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+
+<div id="app">
+	<div class="animate_panel"></div>
+	<h1 align="center" @keyCode.enter="start_app">{{message}}</h1>
+	<h4>{{massive[index_element].title}}</h4>
+	<h1 class="main_element"></h1>
+
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript">
+var start_element = 10,counter = 0,water = start_element,fire = start_element,breeze = start_element,earth = start_element;
+var massive_of_element = [[water,'<button class="btn btn-primary"></button>'],[fire,'<button class="btn btn-danger"></button>'],[breeze,'<button class="btn"></button>'],[earth,'<button class="btn btn-success"></button>']];
+	 function animate(){
+
+	 	$('.animate_panel').empty();
+	 	for (var i = 0; i <= massive_of_element.length; i++) {
+	 		while (counter < massive_of_element[i][0]){
+	 		$('.animate_panel').append(massive_of_element[i][1]);
+	 		alert(counter);
+	 		alert(massive_of_element[i][0]);
+	 		counter +=1;
+	 	}
+	 	counter = 0;
+	 	}
+	 	// while (counter < water){
+	 	// 	$('.animate_panel').append('<button class="btn btn-primary"></button>');
+	 	// 	counter +=1;
+	 	// }
+	 	// counter = 0;
+	 }
+
+	function dec_counter(){
+				$('.main_element').empty();
+				alert(massive_of_element[0][0]);
+				$('.main_element').append(start_element);
+				if(start_element == 0){
+					start_element = 10;
+				}
+				for (var i = 0; i <= massive_of_element.length; i++) {
+					alert(massive_of_element.length);
+					alert(i);
+					massive_of_element[i][0]-=1;
+				}
+				animate();
+	}
+	
+	function start_app(){
+			setInterval(dec_counter,1000);
+		}
+
+	var app = new Vue({
+  		el: '#app',
+  		data: {
+    		message: new Date(),
+    		index_element:0,
+    		massive:[
+    				{title:"title of news"},
+    				{text:"news"}
+    		]
+  		},
+  		methods:{
+  			start_app: start_app()
+  		}
+})
+
+
+</script>
+
+
+
+</body>
+</html>
