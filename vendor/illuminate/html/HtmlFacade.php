@@ -1,4 +1,6 @@
-<?php namespace Illuminate\Html;
+<?php 
+
+namespace Illuminate\Html;
 
 use Illuminate\Support\Facades\Facade;
 
